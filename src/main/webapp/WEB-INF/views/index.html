@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="/layout::head">
+</head>
+<body>
+<h3>Customers</h3>
+<table id = "customers">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>FirstName</th>
+        <th>LastName</th>
+        <th>Address</th>
+        <th>View</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="row : ${customers}">
+        <td th:text="${row.getId()}"></td>
+        <td th:text="${row.getFirstName()}"></td>
+        <td th:text="${row.getLastName()}"></td>
+        <td th:text="${row.getAddress()}"></td>
+        <td><a th:href="@{/customers/{id}/view(id=${row.getId()})}">View</a></td>
+    </tr>
+    </tbody>
+</table>
+<footer th:replace="/layout :: footer"></footer>
+</body>
+</html>
